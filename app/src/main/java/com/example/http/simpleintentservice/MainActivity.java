@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -59,29 +59,29 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button_plus:
                 Intent intent1 = new Intent(this, SimpleIntentService.class)
                         .setAction("action.GET_SUM")
-                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
+                        .putExtra("extra.FIRST_VALUE", Double.parseDouble(mFirstValue.getText().toString()))
+                        .putExtra("extra.SECOND_VALUE", Double.parseDouble(mSecondValue.getText().toString()));
                 startService(intent1);
                 break;
             case R.id.button_minus:
                 Intent intent2 = new Intent(this, SimpleIntentService.class)
                         .setAction("action.GET_SUBTRACTION")
-                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
+                        .putExtra("extra.FIRST_VALUE", Double.parseDouble(mFirstValue.getText().toString()))
+                        .putExtra("extra.SECOND_VALUE", Double.parseDouble(mSecondValue.getText().toString()));
                 startService(intent2);
                 break;
             case R.id.button_multiply:
                 Intent intent3 = new Intent(this, SimpleIntentService.class)
                         .setAction("action.GET_MULTIPLICATION")
-                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
+                        .putExtra("extra.FIRST_VALUE", Double.parseDouble(mFirstValue.getText().toString()))
+                        .putExtra("extra.SECOND_VALUE", Double.parseDouble(mSecondValue.getText().toString()));
                 startService(intent3);
                 break;
             case R.id.button_divide:
                 Intent intent4 = new Intent(this, SimpleIntentService.class)
                         .setAction("action.GET_DIVISION")
-                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
+                        .putExtra("extra.FIRST_VALUE", Double.parseDouble(mFirstValue.getText().toString()))
+                        .putExtra("extra.SECOND_VALUE", Double.parseDouble(mSecondValue.getText().toString()));
                 startService(intent4);
                 break;
         }
