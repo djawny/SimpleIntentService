@@ -22,25 +22,25 @@ public class SimpleIntentService extends IntentService {
                 firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
                 secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 0);
                 result = add(firstValue, secondValue);
-                broadcastResult(result);
+//                broadcastResult(result);
                 setSharePreferences((float) result);
             } else if ("action.GET_SUBTRACTION".equals(action)) {
                 firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
                 secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 0);
                 result = subtract(firstValue, secondValue);
-                broadcastResult(result);
+//                broadcastResult(result);
                 setSharePreferences((float) result);
             } else if ("action.GET_MULTIPLICATION".equals(action)) {
                 firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
                 secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 0);
                 result = multiply(firstValue, secondValue);
-                broadcastResult(result);
+//                broadcastResult(result);
                 setSharePreferences((float) result);
             } else if ("action.GET_DIVISION".equals(action)) {
                 firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
                 secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 1);
                 result = divide(firstValue, secondValue);
-                broadcastResult(result);
+//                broadcastResult(result);
                 setSharePreferences((float) result);
             }
         }
