@@ -7,8 +7,21 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import butterknife.BindView;
 
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.first_value)
+    EditText mFirstValue;
+
+    @BindView(R.id.second_value)
+    EditText mSecondValue;
+
+    @BindView(R.id.result)
+    TextView mResult;
 
     LocalBroadcastManager localBroadcastManager;
 
