@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            double result = intent.getDoubleExtra("extra.RESULT", 0);
+//            double result = intent.getDoubleExtra("extra.RESULT", 0);
+//            mResult.setText(String.valueOf(result));
+            SharedPreferences preferences = getSharedPreferences("action_result", MODE_PRIVATE);
+            float result = preferences.getFloat("result", 0);
             mResult.setText(String.valueOf(result));
         }
     };
