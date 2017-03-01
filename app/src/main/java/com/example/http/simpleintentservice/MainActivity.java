@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ButterKnife.bind(this);
         IntentFilter filter = new IntentFilter();
         filter.addAction("action.CALCULATION_RESULT");
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
