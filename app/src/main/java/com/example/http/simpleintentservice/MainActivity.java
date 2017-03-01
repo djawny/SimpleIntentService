@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            // TODO odbierz odpowiedź i wyświetl wynik na ekranie
-            // double result = intent.getDoubleExtra("NAZWA_POLA", 0);
+            double result = intent.getDoubleExtra("extra.RESULT", 0);
+            mResult.setText(String.valueOf(result));
         }
     };
 
@@ -40,20 +40,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         IntentFilter filter = new IntentFilter();
-        // filter.addAction("NAZWA_AKCJI"); TODO: wstaw nazwę akcji którą chcesz odebrać
-
+        filter.addAction("action.CALCULATION_RESULT");
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(broadcastReceiver, filter);
-
-
-        // TODO: Wysyłanie parametrów po kliknięciu na guzik
-//        Intent intent = new Intent();
-//        intent.setAction("NAZWA_AKCJI");
-//        intent.putExtra("NAZWA_PARAMETRU", wartoscA);
-//        intent.putExtra("NAZWA_PARAMETRU", wartoscB);
-//        localBroadcastManager.sendBroadcast(intent);
     }
 
     @Override
@@ -67,30 +57,30 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.button_plus:
                 Intent intent1 = new Intent(this, SimpleIntentService.class)
-                        .setAction("GET_SUM")
-                        .putExtra("FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("SECOND_VALUE", mSecondValue.getText().toString());
+                        .setAction("action.GET_SUM")
+                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
+                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
                 startService(intent1);
                 break;
             case R.id.button_minus:
                 Intent intent2 = new Intent(this, SimpleIntentService.class)
-                        .setAction("GET_SUBTRACTION")
-                        .putExtra("FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("SECOND_VALUE", mSecondValue.getText().toString());
+                        .setAction("action.GET_SUBTRACTION")
+                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
+                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
                 startService(intent2);
                 break;
             case R.id.button_multiply:
                 Intent intent3 = new Intent(this, SimpleIntentService.class)
-                        .setAction("GET_MULTIPLICATION")
-                        .putExtra("FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("SECOND_VALUE", mSecondValue.getText().toString());
+                        .setAction("action.GET_MULTIPLICATION")
+                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
+                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
                 startService(intent3);
                 break;
             case R.id.button_divide:
                 Intent intent4 = new Intent(this, SimpleIntentService.class)
-                        .setAction("GET_DIVISION")
-                        .putExtra("FIRST_VALUE", mFirstValue.getText().toString())
-                        .putExtra("SECOND_VALUE", mSecondValue.getText().toString());
+                        .setAction("action.GET_DIVISION")
+                        .putExtra("extra.FIRST_VALUE", mFirstValue.getText().toString())
+                        .putExtra("extra.SECOND_VALUE", mSecondValue.getText().toString());
                 startService(intent4);
                 break;
         }

@@ -17,24 +17,24 @@ public class SimpleIntentService extends IntentService {
             double firstValue;
             double secondValue;
             double result;
-            if ("GET_SUM".equals(action)) {
-                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
-                secondValue = intent.getDoubleExtra("SECOND_VALUE", 0);
+            if ("action.GET_SUM".equals(action)) {
+                firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 0);
                 result = add(firstValue, secondValue);
                 broadcastResult(result);
-            } else if ("GET_SUBTRACTION".equals(action)) {
-                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
-                secondValue = intent.getDoubleExtra("SECOND_VALUE", 0);
+            } else if ("action.GET_SUBTRACTION".equals(action)) {
+                firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 0);
                 result = subtract(firstValue, secondValue);
                 broadcastResult(result);
-            } else if ("GET_MULTIPLICATION".equals(action)) {
-                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
-                secondValue = intent.getDoubleExtra("SECOND_VALUE", 0);
+            } else if ("action.GET_MULTIPLICATION".equals(action)) {
+                firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 0);
                 result = multiply(firstValue, secondValue);
                 broadcastResult(result);
-            } else if ("GET_DIVISION".equals(action)) {
-                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
-                secondValue = intent.getDoubleExtra("SECOND_VALUE", 1);
+            } else if ("action.GET_DIVISION".equals(action)) {
+                firstValue = intent.getDoubleExtra("extra.FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("extra.SECOND_VALUE", 1);
                 result = divide(firstValue, secondValue);
                 broadcastResult(result);
             }
@@ -44,7 +44,7 @@ public class SimpleIntentService extends IntentService {
     private void broadcastResult(double result) {
         Intent intent = new Intent();
         intent.setAction("action.CALCULATION_RESULT");
-        intent.putExtra("extra.VALUE", result);
+        intent.putExtra("extra.RESULT", result);
         LocalBroadcastManager broadcastManager = LocalBroadcastManager.getInstance(this);
         broadcastManager.sendBroadcast(intent);
     }
