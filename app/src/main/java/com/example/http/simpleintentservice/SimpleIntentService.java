@@ -15,12 +15,29 @@ public class SimpleIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
             String action = intent.getAction();
+            double firstValue;
+            double secondValue;
+            double result;
+            if ("GET_SUM".equals(action)) {
+                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("SECOND_VALUE", 0);
+                result = add(firstValue, secondValue);
 
-            if ("NAZWA_AKCJI_1".equals(action)) {
-                //TODO pobierz parametry, oblicz i odeślij wynik
-            }
-            else if ("NAZWA_AKCJI_2".equals(action)) {
-                //TODO pobierz parametry, oblicz i odeślij wynik
+            } else if ("GET_SUBTRACTION".equals(action)) {
+                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("SECOND_VALUE", 0);
+                result = subtract(firstValue, secondValue);
+
+            } else if ("GET_MULTIPLICATION".equals(action)) {
+                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("SECOND_VALUE", 0);
+                result = multiply(firstValue, secondValue);
+
+            } else if ("GET_DIVISION".equals(action)) {
+                firstValue = intent.getDoubleExtra("FIRST_VALUE", 0);
+                secondValue = intent.getDoubleExtra("SECOND_VALUE", 1);
+                result = divide(firstValue, secondValue);
+
             }
         }
     }
